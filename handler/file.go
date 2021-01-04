@@ -53,7 +53,7 @@ func (f *File) Save(c echo.Context) error {
 		"MESSAGE",
 		"the file was saved successfully",
 		false,
-		url,
+		"https://api-url-images.herokuapp.com/api/images/"+url,
 	)
 	return c.JSON(http.StatusCreated, response)
 }

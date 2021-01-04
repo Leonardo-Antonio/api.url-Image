@@ -7,6 +7,9 @@ import (
 
 func Home(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string][]string{
-		"endpoints": {"api/v1/images [POST]", "api/v1/images/:imageID [GET]"},
+		"endpoints": {
+			"https://api-url-images.herokuapp.com/api/v1/images [POST]",
+			"https://api-url-images.herokuapp.com/api/v1/images/:imageID [GET]",
+		},
 	})
 }
