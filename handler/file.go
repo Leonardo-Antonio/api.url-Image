@@ -1,12 +1,14 @@
 package handler
 
 import (
+	"fmt"
 	"github.com/Leonardo-Antonio/api.images/helper"
 	"github.com/aidarkhanov/nanoid/v2"
 	"github.com/labstack/echo/v4"
 	"io/ioutil"
 	"net/http"
 	"os"
+	"strings"
 )
 
 type File struct{}
@@ -27,6 +29,7 @@ func (f *File) Save(c echo.Context) error {
 		response := helper.NewResponseJSON("ERROR", err.Error(), true, nil)
 		return c.JSON(http.StatusInternalServerError, response)
 	}
+	defer file.Close()
 
 	fileBytes, err := ioutil.ReadAll(file)
 	if err != nil {
@@ -39,7 +42,9 @@ func (f *File) Save(c echo.Context) error {
 		response := helper.NewResponseJSON("ERROR", err.Error(), true, nil)
 		return c.JSON(http.StatusInternalServerError, response)
 	}
-	url := ID + fileHeader.Filename
+	fileName := strings.Split(fileHeader.Filename, " ")
+	fmt.Println(strings.Join(fileName, "-"))
+	url := ID + strings.Join(fileName, "-")
 	err = ioutil.WriteFile(
 		"public/images/"+url,
 		fileBytes, os.FileMode(os.ModePerm),
@@ -53,7 +58,7 @@ func (f *File) Save(c echo.Context) error {
 		"MESSAGE",
 		"the file was saved successfully",
 		false,
-		"https://api-url-images.herokuapp.com/api/images/"+url,
+		"https://api-url-images.herokuapp.com/api/v1/images/"+url,
 	)
 	return c.JSON(http.StatusCreated, response)
 }
