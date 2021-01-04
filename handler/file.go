@@ -47,7 +47,7 @@ func (f *File) Save(c echo.Context) error {
 	url := ID + strings.Join(fileName, "-")
 	err = ioutil.WriteFile(
 		"public/images/"+url,
-		fileBytes, os.FileMode(os.ModePerm),
+		fileBytes, os.ModePerm,
 	)
 	if err != nil {
 		response := helper.NewResponseJSON("ERROR", err.Error(), true, nil)
