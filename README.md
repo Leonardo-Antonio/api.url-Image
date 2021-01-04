@@ -1,5 +1,7 @@
 # API REST - SERVER FILES
 
+- deploy heroku ( https://api-url-images.herokuapp.com/ )
+
 - EndPoints
     - / [GET]
     - api/v1/images [POST]
