@@ -13,6 +13,7 @@ func main() {
 		port = "8080"
 	}
 	e := echo.New()
+	router.Home(e)
 	router.File(e)
 	e.Use(middleware.CORS())
 	e.Logger.Fatal(e.Start(":" + port))
