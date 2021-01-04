@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Url Image</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <form id="form">
+            <input type="file"
+                   accept="image/*"
+                   name="file"
+                   class="form-control my-3"
+            >
+            <button class="btn btn-primary btn-block my-3">
+                Send file
+            </button>
+        </form>
+        <div>
+            <a id="image-url" target="_blank"></a>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
