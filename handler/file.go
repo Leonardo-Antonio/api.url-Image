@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"fmt"
 	"github.com/Leonardo-Antonio/api.images/helper"
 	"github.com/aidarkhanov/nanoid/v2"
 	"github.com/labstack/echo/v4"
@@ -43,7 +42,6 @@ func (f *File) Save(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, response)
 	}
 	fileName := strings.Split(fileHeader.Filename, " ")
-	fmt.Println(strings.Join(fileName, "-"))
 	url := ID + strings.Join(fileName, "-")
 	err = ioutil.WriteFile(
 		"public/images/"+url,
